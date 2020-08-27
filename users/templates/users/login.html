@@ -1,0 +1,22 @@
+{% extends "blog/base.html" %}  
+{% load crispy_forms_tags %} 
+{% block content %} 
+<div class="card p-5 mt-5">
+    <h5 class="card-header info-color white-text text-center py-4">
+      <strong>Log In</strong>
+    </h5>
+      <div class="card-body px-lg-5 pt-0">
+        <form class="text-center" style="color: #757575;" action="#!" method="POST">
+            {% csrf_token %}
+            <div class="">
+              {{ form|crispy }}
+            </div>
+  
+            <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Login</button>
+            <p>Not a registered user?<a href="{% url 'register' %}">Sign Up</a></p>
+            <small>Forgot Password<a href="{% url 'password_reset' %}">Reset Password</a></small>
+      </form>  
+    </div>
+  </div>
+
+{% endblock content %}

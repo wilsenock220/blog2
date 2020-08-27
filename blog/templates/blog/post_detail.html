@@ -1,0 +1,31 @@
+{% extends "blog/base.html" %}   
+{% block content %} 
+    <div class="container pt-5 mt-5 text-center">
+        <div class="card mt-5 text-center m-5 blue darken-1">
+            <!-- <div class="view overlay zoom p-3 m-3">
+                <img src="https://images.unsplash.com/photo-1448387473223-5c37445527e7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="card-img-top img-fluid"
+                alt="photo">
+                <a href="#">
+                <div class="mask rgba-white-slight"></div>
+                </a> -->
+            </div>
+            <div class="avatar mx-auto">
+                <img src="{{ object.author.profile.image.url }}" class="rounded-circle" style="height: 125px; width: 125px" alt="Sample avatar image.">
+            </div>
+            <div class="card-body text-center">
+                <small class="text-muted">By {{ post.author }} on {{ object.date_posted }}</small>
+                <h4 class="card-title font-weight-bold cyan-lighter-hover mb-3">{{ object.title }}</h4>
+                <p class="card-text font-weight-light cyan-lighter-hover mb-3">{{ object.content }}</p>
+            </div>
+            {% if object.author == user %}
+            <div class="d-flex">
+              <a class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" href="{% url 'post-update' object.id %}">Update</a>
+              <a class="btn btn-outline-danger btn-rounded btn-block my-4 waves-effect z-depth-0" href="{% url 'post-delete' object.id %}">Delete</a>
+            </div>
+          {% endif %}
+  
+        </div>
+    </div>
+
+{% endblock content %}
+
